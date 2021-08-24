@@ -2,7 +2,9 @@ package com.amostrone.akash.hybridcalc;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
@@ -72,6 +74,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void calc_clicked(View view) {
+
+        // Get instance of Vibrator from current Context
+        Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        // Vibrate for 400 milliseconds
+        v.vibrate(300);
 
         switch (view.getId()) {
             case R.id.add:

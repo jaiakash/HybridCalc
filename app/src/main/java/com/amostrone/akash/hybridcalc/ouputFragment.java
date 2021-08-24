@@ -69,8 +69,6 @@ public class ouputFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
-        float ans = requireArguments().getFloat("Answer");
-        TextView edtans = getView().findViewById(R.id.ansTextView);
-        edtans.setText("Your ans is = "+ans);
+
     }
 }

@@ -21,7 +21,11 @@ public class MainActivity extends AppCompatActivity {
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
                     .setReorderingAllowed(true)
-                    .add(R.id.fragment_container_view, inputFragment.class, null)
+                    .add(R.id.fragment_container_input, inputFragment.class, null)
+                    .commit();
+            getSupportFragmentManager().beginTransaction()
+                    .setReorderingAllowed(true)
+                    .add(R.id.fragment_container_output, ouputFragment.class, null)
                     .commit();
         }
     }
@@ -62,12 +66,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         Toast.makeText(this, ans+"", Toast.LENGTH_SHORT).show();
-
-        Bundle bundle = new Bundle();
-        bundle.putFloat("Answer", ans);
-        getSupportFragmentManager().beginTransaction()
-                .setReorderingAllowed(true)
-                .add(R.id.fragment_container_view, ouputFragment.class, bundle)
-                .commit();
+        TextView edtans = findViewById(R.id.ansTextView);
+        edtans.setText("Your ans is = "+ans);
     }
 }

@@ -5,12 +5,11 @@
     android:layout_height="match_parent"
     tools:context=".ouputFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
         android:id="@+id/ansTextView"
-        android:textSize="30dp"
+        android:textSize="25dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Your ans is is this" />
+        android:text="Click on buton to do calculation" />
 
 </FrameLayout>

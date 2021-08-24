@@ -3,6 +3,7 @@ package com.amostrone.akash.hybridcalc;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -27,9 +28,22 @@ public class MainActivity extends AppCompatActivity {
     public void calc_clicked(View view) {
         EditText edtone = findViewById(R.id.editText1);
         EditText edttwo = findViewById(R.id.editText2);
-        float a = Float.parseFloat(edtone.getText().toString());
-        float b = Float.parseFloat(edttwo.getText().toString());
-        float ans=0;
+        float a,b,ans;
+        if(TextUtils.isEmpty(edtone.getText()))
+        {
+            edtone.setError(" Please enter the number");
+            return;
+        }else {
+            a = Float.parseFloat(edtone.getText().toString());
+        }
+        if(TextUtils.isEmpty(edttwo.getText()))
+        {
+            edttwo.setError(" Please enter the number ");
+            return;
+        }else {
+            b = Float.parseFloat(edttwo.getText().toString());
+        }
+        ans=0;
         switch (view.getId()) {
             case R.id.plus:
                 ans=a+b;

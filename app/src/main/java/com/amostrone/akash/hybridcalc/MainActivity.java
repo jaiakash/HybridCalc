@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -59,6 +60,14 @@ public class MainActivity extends AppCompatActivity {
                 else ans=-1;
                 break;
         }
+
         Toast.makeText(this, ans+"", Toast.LENGTH_SHORT).show();
+
+        Bundle bundle = new Bundle();
+        bundle.putFloat("Answer", ans);
+        getSupportFragmentManager().beginTransaction()
+                .setReorderingAllowed(true)
+                .add(R.id.fragment_container_view, ouputFragment.class, bundle)
+                .commit();
     }
 }

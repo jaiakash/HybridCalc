@@ -94,6 +94,21 @@ public class MainActivity extends AppCompatActivity {
                 operation="Division";
                 op=4;
                 break;
+            case R.id.pow:
+                operation_pressed=true;
+                operation="Exponent";
+                op=5;
+                break;
+            case R.id.clear_all:
+                operation_pressed=false;
+                operation="None";
+                op=0;
+                a_val=0;
+                b_val=0;
+                break;
+            case R.id.clear:
+                b_val=0;
+                break;
             case R.id.ans:
                 switch(op){
                     case 1:
@@ -109,13 +124,20 @@ public class MainActivity extends AppCompatActivity {
                         if(b_val!=0) ans=a_val/b_val;
                         else ans=-1;
                         break;
+                    case 5:
+                        ans=(float)Math.pow(a_val,b_val);
+                        break;
                 }
                 break;
             case R.id.decimal:
-                //TODO decimal
-                ans=ans;
+                if(a_val==0 || !operation_pressed) a_val = getnum(view,a_val)/10;
+                else if(b_val==0 || operation_pressed) b_val = getnum(view,b_val)/10;
                 break;
             default:
+                if(view.getId() == R.id.sign) {
+                    if(!operation_pressed)a_val*=-1;
+                    else b_val*=-1;
+                }
                 if(a_val==0 || !operation_pressed) a_val = getnum(view,a_val);
                 else if(b_val==0 || operation_pressed) b_val = getnum(view,b_val);
         }

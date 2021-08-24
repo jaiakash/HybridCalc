@@ -8,20 +8,23 @@
 
     <TextView
         android:id="@+id/aTextView"
+        android:textAlignment="center"
         android:textSize="25dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="A = " />
+        android:text="A = 0" />
 
     <TextView
         android:id="@+id/bTextView"
+        android:textAlignment="center"
         android:textSize="25dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="B = " />
+        android:text="B = 0" />
 
     <TextView
         android:id="@+id/opTextView"
+        android:textAlignment="center"
         android:textSize="25dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -29,6 +32,7 @@
 
     <TextView
         android:id="@+id/ansTextView"
+        android:textAlignment="center"
         android:textSize="25dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

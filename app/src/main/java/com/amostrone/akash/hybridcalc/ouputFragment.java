@@ -17,11 +17,11 @@ public class ouputFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getParentFragmentManager().setFragmentResultListener("requestKey", this, new FragmentResultListener() {
+        getParentFragmentManager().setFragmentResultListener("requestXYZ", this, new FragmentResultListener() {
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle bundle) {
                 // We use a String here, but any type that can be put in a Bundle is supported
-                String result = bundle.getString("bundleKey");
+                String result = bundle.getString("bundleABC");
                 // Do something with the result
                 TextView ansTV = getView().findViewById(R.id.ansTextView);
                 ansTV.setText(result);

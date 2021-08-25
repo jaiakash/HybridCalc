@@ -54,8 +54,8 @@ public class inputFragment extends Fragment {
                         ans=(float)Math.pow(a_val,b_val);
                         break;
                 }
-                result.putString("bundleKey", "Your ans = "+ans);
-                getParentFragmentManager().setFragmentResult("requestKey", result);
+                result.putString("bundleABC", "Your ans = "+ans);
+                getParentFragmentManager().setFragmentResult("requestXYZ", result);
             }
         });
     }

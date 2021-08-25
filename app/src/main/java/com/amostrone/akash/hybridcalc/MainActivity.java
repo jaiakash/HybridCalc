@@ -128,15 +128,11 @@ public class MainActivity extends AppCompatActivity {
                 if(a_val==0 || !operation_pressed) a_val = getnum(view,a_val);
                 else if(b_val==0 || operation_pressed) b_val = getnum(view,b_val);
         }
-
-        //Toast.makeText(this, a+"", Toast.LENGTH_SHORT).show();
-        TextView edtans = findViewById(R.id.ansTextView);
         TextView opTV = findViewById(R.id.opTextView);
         TextView TVa = findViewById(R.id.aTextView);
         TextView TVb = findViewById(R.id.bTextView);
         opTV.setText("Operation = "+operation);
         TVa.setText("A = "+a_val);
         TVb.setText("B = "+b_val);
-        edtans.setText("Your ans is = "+ans);
     }
 }

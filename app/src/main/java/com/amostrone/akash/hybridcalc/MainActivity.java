@@ -13,9 +13,9 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    float a_val=0,b_val=0,ans=0;
+    public static float a_val=0,b_val=0,ans=0;
     boolean operation_pressed=false;
-    int op=0;
+    public static int op=0;
     String operation="None";
 
     public MainActivity() {
@@ -115,26 +115,6 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.clear:
                 b_val=0;
-                break;
-            case R.id.ans:
-                switch(op){
-                    case 1:
-                        ans=a_val+b_val;
-                        break;
-                    case 2:
-                        ans=a_val-b_val;
-                        break;
-                    case 3:
-                        ans=a_val*b_val;
-                        break;
-                    case 4:
-                        if(b_val!=0) ans=a_val/b_val;
-                        else ans=-1;
-                        break;
-                    case 5:
-                        ans=(float)Math.pow(a_val,b_val);
-                        break;
-                }
                 break;
             case R.id.decimal:
                 if(a_val==0 || !operation_pressed) a_val = getnum(view,a_val)/10;

@@ -1,6 +1,8 @@
 package com.amostrone.akash.hybridcalc;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -11,7 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MyInterface {
 
     public static float a_val=0,b_val=0,ans=0;
     boolean operation_pressed=false;
@@ -26,14 +28,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction()
-                    .setReorderingAllowed(true)
-                    .add(R.id.fragment_container_input, inputFragment.class, null)
-                    .commit();
-            getSupportFragmentManager().beginTransaction()
-                    .setReorderingAllowed(true)
-                    .add(R.id.fragment_container_output, ouputFragment.class, null)
-                    .commit();
+
+            FragmentManager fm = getSupportFragmentManager();
+            FragmentTransaction ft = fm.beginTransaction();
+            ft.replace(R.id.fragment_container_input, new inputFragment());
+            ft.replace(R.id.fragment_container_output, new ouputFragment());
+            ft.addToBackStack(null);
+            ft.commit();
+
         }
     }
 
@@ -116,6 +118,26 @@ public class MainActivity extends AppCompatActivity {
             case R.id.clear:
                 b_val=0;
                 break;
+            case R.id.ans:
+                switch(op){
+                    case 1:
+                        ans=a_val+b_val;
+                        break;
+                    case 2:
+                        ans=a_val-b_val;
+                        break;
+                    case 3:
+                        ans=a_val*b_val;
+                        break;
+                    case 4:
+                        if(b_val!=0) ans=a_val/b_val;
+                        else ans=-1;
+                        break;
+                    case 5:
+                        ans=(float)Math.pow(a_val,b_val);
+                        break;
+                }
+                break;
             case R.id.decimal:
                 if(a_val==0 || !operation_pressed) a_val = getnum(view,a_val)/10;
                 else if(b_val==0 || operation_pressed) b_val = getnum(view,b_val)/10;
@@ -134,5 +156,13 @@ public class MainActivity extends AppCompatActivity {
         opTV.setText("Operation = "+operation);
         TVa.setText("A = "+a_val);
         TVb.setText("B = "+b_val);
+
+        ((MyInterface)this).setResult("Your ans = "+ans);
+    }
+
+    @Override
+    public void setResult(String s) {
+        ouputFragment outputF = (ouputFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_container_output);
+        outputF.setResult(s);
     }
 }

@@ -7,7 +7,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentResultListener;
 import android.widget.TextView;
 
-public class ouputFragment extends Fragment {
+public class ouputFragment extends Fragment implements MyInterface {
+
+    TextView ansTV;
 
     public ouputFragment() {
         // Required empty public constructor
@@ -17,15 +19,11 @@ public class ouputFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getParentFragmentManager().setFragmentResultListener("requestXYZ", this, new FragmentResultListener() {
-            @Override
-            public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle bundle) {
-                // We use a String here, but any type that can be put in a Bundle is supported
-                String result = bundle.getString("bundleABC");
-                // Do something with the result
-                TextView ansTV = getView().findViewById(R.id.ansTextView);
-                ansTV.setText(result);
-            }
-        });
+    }
+
+    @Override
+    public void setResult(String result) {
+        ansTV = getView().findViewById(R.id.ansTextView);
+        ansTV.setText(result);
     }
 }

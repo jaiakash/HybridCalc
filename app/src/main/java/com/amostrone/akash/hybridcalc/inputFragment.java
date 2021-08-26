@@ -26,33 +26,5 @@ public class inputFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Button ansbutton = getView().findViewById(R.id.ans);
-        ansbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Bundle result = new Bundle();
-                float ans=0;
-                switch(op){
-                    case 1:
-                        ans=a_val+b_val;
-                        break;
-                    case 2:
-                        ans=a_val-b_val;
-                        break;
-                    case 3:
-                        ans=a_val*b_val;
-                        break;
-                    case 4:
-                        if(b_val!=0) ans=a_val/b_val;
-                        else ans=-1;
-                        break;
-                    case 5:
-                        ans=(float)Math.pow(a_val,b_val);
-                        break;
-                }
-                result.putString("bundleABC", "Your ans = "+ans);
-                getParentFragmentManager().setFragmentResult("requestXYZ", result);
-            }
-        });
     }
 }
